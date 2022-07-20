@@ -1,13 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import appStyles from "./App.module.css";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import Filter from "./components/Filter/Filter";
-function App({ contacts }) {
+import Contacts from './redux/contacts';
+export default function App() {
+  const [contacts] = useState(Contacts);
   useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts));
+    localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
   return (
@@ -20,8 +21,5 @@ function App({ contacts }) {
     </div>
   );
 }
-const mapStateToProps = (state) => ({
-  contacts: state.contacts,
-});
 
-export default connect(mapStateToProps)(App);
+

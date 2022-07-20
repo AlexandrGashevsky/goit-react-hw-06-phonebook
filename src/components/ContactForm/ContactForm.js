@@ -14,7 +14,7 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const isAdded = (name) =>
-      contacts.items.map((contact) => contact.name).includes(name);
+      contacts.items.map((contact) => contact.name.toLowerCase()).includes(name.toLowerCase());
 
     if (isAdded(name)) {
       return alert(`${name} is already in contacts`);
